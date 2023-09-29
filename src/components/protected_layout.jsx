@@ -2,7 +2,6 @@ import { Link, Navigate, useOutlet } from 'react-router-dom'
 
 import useUserStore from '../hooks/user_store'
 
-// eslint-disable-next-line react/prop-types
 export const ProtectedLayout = () => {
   const { user, setUser } = useUserStore()
   const outlet = useOutlet()

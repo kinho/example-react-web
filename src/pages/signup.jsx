@@ -1,28 +1,29 @@
+import { useNavigate } from 'react-router-dom'
+
 import { UserForm } from '../components/user_form'
-import useUserStore from '../hooks/user_store'
 
-function Login() {
-  const { setUser } = useUserStore()
+function Signup() {
+  const navigate = useNavigate()
 
-  const onLogin = (values) => {
-    console.log('onLogin values ->', values)
-    setUser({ name: 'kinho' })
+  const onSignup = (values) => {
+    console.log('onSignup values ->', values)
+    navigate('/login')
   }
 
   return (
     <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
       <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-          Sign in to your account
+          Sign up to your account
         </h1>
 
         <div className="space-y-4 md:space-y-6">
-          <UserForm onSubmit={onLogin} login={true} />
+          <UserForm onSubmit={onSignup} signup={true} />
 
           <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-            Don’t have an account yet? &nbsp;
-            <a href="/signup" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
-              Sign up
+            You have account? &nbsp;
+            <a href="/login" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
+              Sign in
             </a>
           </p>
         </div>
@@ -31,4 +32,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Signup
