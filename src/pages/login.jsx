@@ -1,12 +1,26 @@
-import { UserForm } from '../components/user_form'
+import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
+
 import useUserStore from '../hooks/user_store'
+import { UserForm } from '../components/user_form'
+import { SuccessAlert } from '../components/success_alert'
+import { login } from '../services/user'
 
 function Login() {
+  const [searchParams] = useSearchParams()
+  const [loading, setLoading] = useState(false)
   const { setUser } = useUserStore()
 
-  const onLogin = (values) => {
-    console.log('onLogin values ->', values)
-    setUser({ name: 'kinho' })
+  const onLogin = async ({ username, password }) => {
+    if (loading) return
+    setLoading(true)
+
+    const logged = await login(username, password)
+    if (logged) {
+      setUser(logged)
+    }
+
+    setLoading(false)
   }
 
   return (
@@ -16,8 +30,10 @@ function Login() {
           Sign in to your account
         </h1>
 
+        {searchParams.get('saved') && <SuccessAlert message={"Registered user. Try login!"} />}
+
         <div className="space-y-4 md:space-y-6">
-          <UserForm onSubmit={onLogin} login={true} />
+          <UserForm onSubmit={onLogin} login={true} loading={loading} />
 
           <p className="text-sm font-light text-gray-500 dark:text-gray-400">
             Don’t have an account yet? &nbsp;
