@@ -11,8 +11,10 @@ import { ProtectedLayout } from './components/protected_layout'
 import Login from './pages/login'
 import Signup from './pages/signup'
 import News from './pages/news'
+import AddNews from './pages/add_news'
 
 import './styles/app.css'
+import './styles/index.css'
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +27,7 @@ export const router = createBrowserRouter(
 
       <Route path="/dashboard" element={<ProtectedLayout />}>
         <Route path="news" element={<News />} />
+        <Route path="news-add" element={<AddNews />} />
       </Route>
     </>
   )

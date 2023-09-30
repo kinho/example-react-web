@@ -21,6 +21,7 @@ export const HomeLayout = () => {
           >
             Mission Brasil
           </a>
+
           <Outlet />
         </div>
       </section>
