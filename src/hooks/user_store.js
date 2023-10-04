@@ -8,7 +8,7 @@ const useUserStore = create()(
       setUser: (user) =>
         set({ user }),
     })),
-    { name: 'mission-storage' }
+    { name: 'example-storage' }
   )
 )
 

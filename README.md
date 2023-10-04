@@ -1,7 +1,7 @@
-# <b>MISSION BRASIL WEB</b>
+# <b>EXAMPLE REACT WEB</b>
 
 ### Description
-Mission Brasil challenge front-end WEB.
+Simple example ReactJS web app with vite and tailwind.
 
 ### Requirements
 - node 18
